@@ -2,6 +2,19 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:mobiletask/model/wheather_model.dart';
 
+void main (){
+  final repo = WeatherRepository("10a318d7a7c243ae845103849260904");
+  repo.fetchMultipleCities(["Delhi", "Mumbai", "Jaipur", "Bangalore", "Chennai",
+    "Kolkata", "Hyderabad", "Pune", "Goa", "Chandigarh",
+    "Ahmedabad", "Surat", "Lucknow", "Kanpur", "Nagpur",
+    "Indore", "Bhopal", "Patna", "Ranchi", "Raipur",
+    "Varanasi", "Amritsar", "Agra", "Shimla", "Manali",
+    "Dehradun", "Udaipur", "Jodhpur", "Mysore", "Coimbatore",
+    "Trivandrum", "Visakhapatnam"]);
+
+  print(repo);
+}
+
 class WeatherRepository {
   final String apiKey;
   final String baseUrl = 'http://api.weatherapi.com/v1';

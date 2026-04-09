@@ -12,7 +12,6 @@ class CitySelectionScreen extends StatefulWidget {
 class _CitySelectionScreenState extends State<CitySelectionScreen> {
   final repo = WeatherRepository("10a318d7a7c243ae845103849260904");
 
-  /// 🇮🇳 Expanded Indian cities
   final List<String> allCities = [
     "Delhi", "Mumbai", "Jaipur", "Bangalore", "Chennai",
     "Kolkata", "Hyderabad", "Pune", "Goa", "Chandigarh",
@@ -27,7 +26,6 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
   List<Weather> results = [];
   bool loading = false;
 
-  /// 🔢 SORTING (Best → Worst)
   List<Weather> sortCities(List<Weather> cities) {
     cities.sort((a, b) {
       final scoreA = calculateScore(a);
@@ -37,7 +35,6 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
     return cities;
   }
 
-  /// 🌴 Travel category label
   String getTravelTag(double score) {
     if (score >= 60) return "🌴 Great";
     if (score >= 40) return "🙂 Good";
@@ -45,7 +42,6 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
     return "⚠️ Avoid";
   }
 
-  /// 🔘 Select / Unselect city
   void toggleCity(String city) {
     setState(() {
       selectedCities.contains(city)
@@ -54,7 +50,6 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
     });
   }
 
-  /// 🌐 Fetch + Sort
   Future<void> fetchData() async {
     setState(() => loading = true);
 

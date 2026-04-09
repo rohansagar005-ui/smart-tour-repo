@@ -6,19 +6,20 @@ class Weather {
 
   Weather.fromJson(Map<String, dynamic> json) {
     location = json['location'] != null
-        ? new Location.fromJson(json['location'])
+        ? Location.fromJson(json['location'])
         : null;
-    current =
-    json['current'] != null ? new Current.fromJson(json['current']) : null;
+    current = json['current'] != null
+        ? Current.fromJson(json['current'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.location != null) {
-      data['location'] = this.location!.toJson();
+    final Map<String, dynamic> data = {};
+    if (location != null) {
+      data['location'] = location!.toJson();
     }
-    if (this.current != null) {
-      data['current'] = this.current!.toJson();
+    if (current != null) {
+      data['current'] = current!.toJson();
     }
     return data;
   }
@@ -31,7 +32,7 @@ class Location {
   double? lat;
   double? lon;
   String? tzId;
-  int? localtimeEpoch;
+  double? localtimeEpoch; // changed from int?
   String? localtime;
 
   Location(
@@ -48,45 +49,45 @@ class Location {
     name = json['name'];
     region = json['region'];
     country = json['country'];
-    lat = json['lat'];
-    lon = json['lon'];
+    lat = (json['lat'] as num?)?.toDouble();
+    lon = (json['lon'] as num?)?.toDouble();
     tzId = json['tz_id'];
-    localtimeEpoch = json['localtime_epoch'];
+    localtimeEpoch = (json['localtime_epoch'] as num?)?.toDouble();
     localtime = json['localtime'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['region'] = this.region;
-    data['country'] = this.country;
-    data['lat'] = this.lat;
-    data['lon'] = this.lon;
-    data['tz_id'] = this.tzId;
-    data['localtime_epoch'] = this.localtimeEpoch;
-    data['localtime'] = this.localtime;
+    final Map<String, dynamic> data = {};
+    data['name'] = name;
+    data['region'] = region;
+    data['country'] = country;
+    data['lat'] = lat;
+    data['lon'] = lon;
+    data['tz_id'] = tzId;
+    data['localtime_epoch'] = localtimeEpoch;
+    data['localtime'] = localtime;
     return data;
   }
 }
 
 class Current {
-  int? lastUpdatedEpoch;
+  double? lastUpdatedEpoch; // changed from int?
   String? lastUpdated;
   double? tempC;
   double? tempF;
-  int? isDay;
+  double? isDay; // changed from int?
   Condition? condition;
   double? windMph;
   double? windKph;
-  int? windDegree;
+  double? windDegree; // changed from int?
   String? windDir;
-  int? pressureMb;
+  double? pressureMb;
   double? pressureIn;
-  int? precipMm;
-  int? precipIn;
-  int? humidity;
-  int? cloud;
-  int? feelslikeC;
+  double? precipMm;
+  double? precipIn;
+  double? humidity; // changed from int?
+  double? cloud; // changed from int?
+  double? feelslikeC;
   double? feelslikeF;
   double? windchillC;
   double? windchillF;
@@ -94,13 +95,13 @@ class Current {
   double? heatindexF;
   double? dewpointC;
   double? dewpointF;
-  int? visKm;
-  int? visMiles;
-  int? uv;
+  double? visKm;
+  double? visMiles;
+  double? uv;
   double? gustMph;
   double? gustKph;
   double? shortRad;
-  double? diffRad;
+  double? diffRad; // changed from int?
   double? dni;
   double? gti;
 
@@ -140,80 +141,80 @@ class Current {
         this.gti});
 
   Current.fromJson(Map<String, dynamic> json) {
-    lastUpdatedEpoch = json['last_updated_epoch'];
+    lastUpdatedEpoch = (json['last_updated_epoch'] as num?)?.toDouble();
     lastUpdated = json['last_updated'];
-    tempC = json['temp_c'];
-    tempF = json['temp_f'];
-    isDay = json['is_day'];
+    tempC = (json['temp_c'] as num?)?.toDouble();
+    tempF = (json['temp_f'] as num?)?.toDouble();
+    isDay = (json['is_day'] as num?)?.toDouble();
     condition = json['condition'] != null
-        ? new Condition.fromJson(json['condition'])
+        ? Condition.fromJson(json['condition'])
         : null;
-    windMph = json['wind_mph'];
-    windKph = json['wind_kph'];
-    windDegree = json['wind_degree'];
+    windMph = (json['wind_mph'] as num?)?.toDouble();
+    windKph = (json['wind_kph'] as num?)?.toDouble();
+    windDegree = (json['wind_degree'] as num?)?.toDouble();
     windDir = json['wind_dir'];
-    pressureMb = json['pressure_mb'];
-    pressureIn = json['pressure_in'];
-    precipMm = json['precip_mm'];
-    precipIn = json['precip_in'];
-    humidity = json['humidity'];
-    cloud = json['cloud'];
-    feelslikeC = json['feelslike_c'];
-    feelslikeF = json['feelslike_f'];
-    windchillC = json['windchill_c'];
-    windchillF = json['windchill_f'];
-    heatindexC = json['heatindex_c'];
-    heatindexF = json['heatindex_f'];
-    dewpointC = json['dewpoint_c'];
-    dewpointF = json['dewpoint_f'];
-    visKm = json['vis_km'];
-    visMiles = json['vis_miles'];
-    uv = json['uv'];
-    gustMph = json['gust_mph'];
-    gustKph = json['gust_kph'];
-    shortRad = json['short_rad'];
-    diffRad = json['diff_rad'];
-    dni = json['dni'];
-    gti = json['gti'];
+    pressureMb = (json['pressure_mb'] as num?)?.toDouble();
+    pressureIn = (json['pressure_in'] as num?)?.toDouble();
+    precipMm = (json['precip_mm'] as num?)?.toDouble();
+    precipIn = (json['precip_in'] as num?)?.toDouble();
+    humidity = (json['humidity'] as num?)?.toDouble();
+    cloud = (json['cloud'] as num?)?.toDouble();
+    feelslikeC = (json['feelslike_c'] as num?)?.toDouble();
+    feelslikeF = (json['feelslike_f'] as num?)?.toDouble();
+    windchillC = (json['windchill_c'] as num?)?.toDouble();
+    windchillF = (json['windchill_f'] as num?)?.toDouble();
+    heatindexC = (json['heatindex_c'] as num?)?.toDouble();
+    heatindexF = (json['heatindex_f'] as num?)?.toDouble();
+    dewpointC = (json['dewpoint_c'] as num?)?.toDouble();
+    dewpointF = (json['dewpoint_f'] as num?)?.toDouble();
+    visKm = (json['vis_km'] as num?)?.toDouble();
+    visMiles = (json['vis_miles'] as num?)?.toDouble();
+    uv = (json['uv'] as num?)?.toDouble();
+    gustMph = (json['gust_mph'] as num?)?.toDouble();
+    gustKph = (json['gust_kph'] as num?)?.toDouble();
+    shortRad = (json['short_rad'] as num?)?.toDouble();
+    diffRad = (json['diff_rad'] as num?)?.toDouble();
+    dni = (json['dni'] as num?)?.toDouble();
+    gti = (json['gti'] as num?)?.toDouble();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['last_updated_epoch'] = this.lastUpdatedEpoch;
-    data['last_updated'] = this.lastUpdated;
-    data['temp_c'] = this.tempC;
-    data['temp_f'] = this.tempF;
-    data['is_day'] = this.isDay;
-    if (this.condition != null) {
-      data['condition'] = this.condition!.toJson();
+    final Map<String, dynamic> data = {};
+    data['last_updated_epoch'] = lastUpdatedEpoch;
+    data['last_updated'] = lastUpdated;
+    data['temp_c'] = tempC;
+    data['temp_f'] = tempF;
+    data['is_day'] = isDay;
+    if (condition != null) {
+      data['condition'] = condition!.toJson();
     }
-    data['wind_mph'] = this.windMph;
-    data['wind_kph'] = this.windKph;
-    data['wind_degree'] = this.windDegree;
-    data['wind_dir'] = this.windDir;
-    data['pressure_mb'] = this.pressureMb;
-    data['pressure_in'] = this.pressureIn;
-    data['precip_mm'] = this.precipMm;
-    data['precip_in'] = this.precipIn;
-    data['humidity'] = this.humidity;
-    data['cloud'] = this.cloud;
-    data['feelslike_c'] = this.feelslikeC;
-    data['feelslike_f'] = this.feelslikeF;
-    data['windchill_c'] = this.windchillC;
-    data['windchill_f'] = this.windchillF;
-    data['heatindex_c'] = this.heatindexC;
-    data['heatindex_f'] = this.heatindexF;
-    data['dewpoint_c'] = this.dewpointC;
-    data['dewpoint_f'] = this.dewpointF;
-    data['vis_km'] = this.visKm;
-    data['vis_miles'] = this.visMiles;
-    data['uv'] = this.uv;
-    data['gust_mph'] = this.gustMph;
-    data['gust_kph'] = this.gustKph;
-    data['short_rad'] = this.shortRad;
-    data['diff_rad'] = this.diffRad;
-    data['dni'] = this.dni;
-    data['gti'] = this.gti;
+    data['wind_mph'] = windMph;
+    data['wind_kph'] = windKph;
+    data['wind_degree'] = windDegree;
+    data['wind_dir'] = windDir;
+    data['pressure_mb'] = pressureMb;
+    data['pressure_in'] = pressureIn;
+    data['precip_mm'] = precipMm;
+    data['precip_in'] = precipIn;
+    data['humidity'] = humidity;
+    data['cloud'] = cloud;
+    data['feelslike_c'] = feelslikeC;
+    data['feelslike_f'] = feelslikeF;
+    data['windchill_c'] = windchillC;
+    data['windchill_f'] = windchillF;
+    data['heatindex_c'] = heatindexC;
+    data['heatindex_f'] = heatindexF;
+    data['dewpoint_c'] = dewpointC;
+    data['dewpoint_f'] = dewpointF;
+    data['vis_km'] = visKm;
+    data['vis_miles'] = visMiles;
+    data['uv'] = uv;
+    data['gust_mph'] = gustMph;
+    data['gust_kph'] = gustKph;
+    data['short_rad'] = shortRad;
+    data['diff_rad'] = diffRad;
+    data['dni'] = dni;
+    data['gti'] = gti;
     return data;
   }
 }
@@ -221,21 +222,21 @@ class Current {
 class Condition {
   String? text;
   String? icon;
-  int? code;
+  double? code; // changed from int?
 
   Condition({this.text, this.icon, this.code});
 
   Condition.fromJson(Map<String, dynamic> json) {
     text = json['text'];
     icon = json['icon'];
-    code = json['code'];
+    code = (json['code'] as num?)?.toDouble();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['text'] = this.text;
-    data['icon'] = this.icon;
-    data['code'] = this.code;
+    final Map<String, dynamic> data = {};
+    data['text'] = text;
+    data['icon'] = icon;
+    data['code'] = code;
     return data;
   }
 }
