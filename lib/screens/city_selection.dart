@@ -85,7 +85,6 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
         child: Column(
           children: [
 
-            /// 🏙 City Selection
             Padding(
               padding: const EdgeInsets.all(12),
               child: Wrap(
@@ -123,7 +122,6 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
 
             const SizedBox(height: 10),
 
-            /// ⏳ Loader
             if (loading)
               Padding(
                 padding: const EdgeInsets.all(20),
@@ -167,7 +165,6 @@ class _CitySelectionScreenState extends State<CitySelectionScreen> {
                       child: ListTile(
                         contentPadding: EdgeInsets.all(12),
 
-                        /// 🏆 Rank
                         leading: CircleAvatar(
                           backgroundColor: index == 0
                               ? Colors.amber
